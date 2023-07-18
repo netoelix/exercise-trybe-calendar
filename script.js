@@ -1,4 +1,4 @@
-
+//
 const createDaysOfTheWeek = () => {
   const weekDays = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
   const weekDaysList = document.querySelector('.week-days');
