@@ -76,3 +76,33 @@ const choseFunction = () => {
   }
 }
 holidayButtom.addEventListener('click',  choseFunction);
+
+const fridayButtom = document.getElementById('btn-friday');
+const friday = document.querySelectorAll('.friday');
+let clickedFriday = 0;
+let daysFriday = [];
+
+const changeText = () => {
+  for (let index = 0; index < friday.length; index += 1) {
+    daysFriday.push(friday[index].innerText);
+    friday[index].innerText = 'sextou';
+    console.log(daysFriday);
+  }
+  clickedFriday = 1;
+}
+const returnText = () => {
+  for (let indexReturn = 0; indexReturn < friday.length; indexReturn += 1) {
+    friday[indexReturn].innerText = daysFriday[indexReturn];
+    console.log(daysFriday);
+  }
+  clickedFriday = 0;
+}
+const choseFunctionText = () => {
+  if (clickedFriday === 0) {
+    changeText();
+  } else if (clickedFriday === 1) {
+    returnText();
+  }
+}
+
+fridayButtom.addEventListener('click',  choseFunctionText);
