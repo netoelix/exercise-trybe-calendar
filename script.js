@@ -130,8 +130,6 @@ taskColors.forEach((taskColor) => {
   });
 });
 
-const days = document.querySelectorAll('.day');
-
 daysOfTheWeek.forEach((day) => {
   day.addEventListener('click', () => {
     const selectedTask = document.querySelector('.selected');
@@ -171,6 +169,3 @@ inputField.addEventListener('keypress', (event) => {
     addTask();
   }
 });
-
-
-
