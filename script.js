@@ -121,3 +121,56 @@ daysOfTheWeek.forEach((day) => {
   day.addEventListener('mouseover', increaseFontSize);
   day.addEventListener('mouseout', decreaseFontSize);
 });
+
+const taskColors = document.querySelectorAll('.task');
+
+taskColors.forEach((taskColor) => {
+  taskColor.addEventListener('click', () => {
+    taskColor.classList.toggle('selected');
+  });
+});
+
+const days = document.querySelectorAll('.day');
+
+daysOfTheWeek.forEach((day) => {
+  day.addEventListener('click', () => {
+    const selectedTask = document.querySelector('.selected');
+    if (selectedTask) {
+      const color = getComputedStyle(selectedTask).backgroundColor;
+      if (day.style.color === color) {
+        day.style.color = 'rgb(119, 119, 119)';
+      } else {
+        day.style.color = color;
+      }
+    }
+  });
+});
+
+const addButton = document.getElementById('btn-add');
+const inputField = document.getElementById('task-input');
+const taskList = document.getElementById('task-list');
+
+const addTask = () => {
+  const taskText = inputField.value.trim();
+
+  if (taskText === '') {
+    alert('Digite um texto válido para adicionar uma tarefa.');
+    return;
+  }
+
+  const newTask = document.createElement('li');
+  newTask.textContent = taskText;
+  taskList.appendChild(newTask);
+
+  inputField.value = '';
+};
+
+addButton.addEventListener('click', addTask);
+inputField.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    addTask();
+  }
+});
+
+
+
