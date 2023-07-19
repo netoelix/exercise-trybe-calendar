@@ -21,30 +21,58 @@ const decemberDaysList = [29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
 const creatDaysOfDecember = () => {
   for (let index = 0; index < decemberDaysList.length; index +=1) {
     let createDays = document.createElement('li');
-    createDays.id = 'days';
+    createDays.className = 'days';
     createDays.innerHTML = decemberDaysList[index];
     let parent = document.getElementById('days');
     parent.appendChild(createDays);
     switch (decemberDaysList[index]) {
       case 24:
-        createDays.id = 'day holiday';
+        createDays.className = 'day holiday';
       break;
       case 25:
-        createDays.id = 'day holiday friday';
+        createDays.className = 'day holiday friday';
       break;
       case 31:
-        createDays.id = 'day holiday';
+        createDays.className = 'day holiday';
       break;
       case 4:
-        createDays.id = 'day friday';
+        createDays.className = 'day friday';
       break;
       case 11:
-        createDays.id = 'day friday';
+        createDays.className = 'day friday';
       break;
       case 18:
-        createDays.id = 'day friday';
+        createDays.className = 'day friday';
       break;
     }
   }
 }
+
 creatDaysOfDecember();
+
+const holidayButtom = document.getElementById('btn-holiday');
+const holiday = document.querySelectorAll('.holiday');
+let clicked = 0;
+
+const changeColor = () => {
+  for (let index = 0; index < holiday.length; index += 1) {
+    holiday[index].style.backgroundColor = 'red';
+    holiday[index].style.color = '#eee';
+  }
+  clicked = 1;
+}
+const returnColor = () => {
+  for (let indexReturn = 0; indexReturn < holiday.length; indexReturn += 1) {
+    holiday[indexReturn].style.backgroundColor = "rgb(238,238,238)";
+    holiday[indexReturn].style.color = '#777';
+  }
+  clicked = 0;
+}
+const choseFunction = () => {
+  if (clicked === 0) {
+    changeColor();
+  } else if (clicked === 1) {
+    returnColor();
+  }
+}
+holidayButtom.addEventListener('click',  choseFunction);
