@@ -21,7 +21,7 @@ const decemberDaysList = [29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
 const creatDaysOfDecember = () => {
   for (let index = 0; index < decemberDaysList.length; index +=1) {
     let createDays = document.createElement('li');
-    createDays.className = 'days';
+    createDays.className = 'day';
     createDays.innerHTML = decemberDaysList[index];
     let parent = document.getElementById('days');
     parent.appendChild(createDays);
@@ -106,3 +106,18 @@ const choseFunctionText = () => {
 }
 
 fridayButtom.addEventListener('click',  choseFunctionText);
+
+const daysOfTheWeek = document.querySelectorAll('.day');
+
+const increaseFontSize = (event) => {
+  event.target.style.fontSize = '30px';
+};
+
+const decreaseFontSize = (event) => {
+  event.target.style.fontSize = '20px';
+};
+
+daysOfTheWeek.forEach((day) => {
+  day.addEventListener('mouseover', increaseFontSize);
+  day.addEventListener('mouseout', decreaseFontSize);
+});
